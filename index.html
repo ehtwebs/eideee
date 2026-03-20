@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid 💜</title>
+
+<style>
+
+html, body{
+font-size:18px;
+margin:0;
+height:100%;
+font-family:'Poppins','Comic Sans MS',cursive;
+background: radial-gradient(circle at top,#3b0a57,#0d001a);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* pages */
+.page{
+display:none;
+width:100%;
+min-height:100dvh;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:20px;
+box-sizing:border-box;
+position:relative;
+}
+
+.active{
+display:flex;
+}
+
+/* headings */
+h1,h2,h3{
+font-weight:bold;
+text-align:center;
+text-shadow:0 0 10px gold,0 0 20px pink;
+margin-bottom:10px;
+}
+
+h1{ font-size:50px; }
+h2{ font-size:40px; }
+h3{ font-size:50px; }
+
+p{
+font-size:20px;
+line-height:2;
+}
+
+/* banner */
+.banner{
+position:absolute;
+top:0;
+width:100%;
+text-align:center;
+font-size:35px;
+}
+
+/* glowing text */
+.glow{
+color:#ffccff;
+text-shadow:0 0 10px #fff,0 0 30px hotpink,0 0 50px gold;
+animation:glow 2s infinite alternate;
+}
+@keyframes glow{
+from{text-shadow:0 0 10px pink}
+to{text-shadow:0 0 25px gold}
+}
+
+/* stars */
+.star{
+position:absolute;
+width:2px;height:2px;
+background:gold;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+@keyframes twinkle{
+from{opacity:0.3}
+to{opacity:1}
+}
+
+/* particles */
+.star,.spark{
+position:absolute;
+border-radius:50%;
+background:gold;
+animation:float 5s linear infinite;
+}
+
+.star{width:3px;height:3px}
+.spark{width:2px;height:2px;background:white}
+
+@keyframes float{
+from{transform:translate(0,0)}
+to{transform:translate(200px,-300px)}
+}
+
+/* hearts */
+.heart{
+position:absolute;
+font-size:16px;
+animation:float 6s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-100px)}
+}
+
+/* buttons */
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:linear-gradient(45deg,#ff66cc,#ff99dd);
+color:white;
+font-size:16px;
+margin-top:15px;
+}
+
+/* input */
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+width:70%;
+}
+
+/* letter */
+.letter{
+background:rgba(255,255,255,0.95);
+color:#4b0082;
+padding:20px;
+border-radius:20px;
+width:90%;
+max-width:320px;
+box-shadow:0 0 20px pink,0 0 40px gold;
+font-size:14px;
+text-align:left;
+}
+
+@keyframes zoomGlow{
+0%{
+transform:scale(0.5);
+opacity:0;
+}
+100%{
+transform:scale(1);
+opacity:1;
+}
+}
+
+.zoom{
+animation:zoomGlow 1s ease forwards;
+animation-delay:0.2s;
+}
+
+@keyframes bounceIn{
+0%{transform:scale(0.5) translateY(-100px); opacity:0;}
+60%{transform:scale(1.1) translateY(10px);}
+100%{transform:scale(1) translateY(0); opacity:1;}
+}
+
+.bounce{
+animation:bounceIn 1s ease;
+}
+
+.final-img{
+width:140px;
+border-radius:20px;
+margin-top:20px;
+box-shadow:0 0 15px pink,0 0 30px gold;
+}
+.final-img{
+animation:floatImg 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatImg{
+from{transform:translateY(0)}
+to{transform:translateY(10px)}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- stars -->
+<script>
+for(let i=0;i<50;i++){
+let s=document.createElement("div")
+s.className="star"
+s.style.top=Math.random()*100+"%"
+s.style.left=Math.random()*100+"%"
+document.body.appendChild(s)
+}
+for(let i=0;i<30;i++){
+let h=document.createElement("div")
+h.className="heart"
+h.innerHTML="💗"
+h.style.left=Math.random()*100+"%"
+document.body.appendChild(h)
+}
+</script>
+
+<!-- PAGE 0 -->
+<div class="page active" id="p0">
+<div class="banner">🌙✨🌙🌙✨🌙✨🌙🌙✨🌙</div>
+
+<h2>Answer the Question to see what I made for you 💗</h2>
+<p>Tum Meri ______ ho ???</p>
+
+<input id="q">
+<button onclick="checkStart()">Enter</button>
+
+<p id="wrong0" style="display:none;">Sorry ap meri ______ nahi ho🥺 
+     Nikloo yaha say yeh sirf osi k liye hai 😏😤
+</p>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page" id="p1">
+<div class="banner">🎊🎀🎊</div>
+
+<h2>I want to say something this Eid 💜</h2>
+<button onclick="next('p2'); playMusic()">Open Surprise 🎁</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="p2">
+<div class="banner">🌙🎀🌙🎀🌙</div>
+
+<p>Sab log Eid ka Chaand dekh k Eid manaty hain 🌙
+    Or Mei Apko ☺️
+</p>
+<p>Kyu k Mera Chaand tou ap hoo naww 💗🥰</p>
+
+<button onclick="goToMain()">Ggg ☺️</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page" id="p3">
+<div class="banner">💗🎊💗</div>
+
+<h1 class="glow zoom bounce" id="eidText" style="font-size:55px;">Eid Mubarak Meri Catooo 💗</h1>
+
+<button onclick="openWish()">Open 💌</button>
+
+<div id="msg" style="display:none;">
+<p>Meri Catoo I always just wanna see you smile 😊</p>
+ <button onclick="next('p4')">Open Letter 📜</button>
+</div>
+</div>
+
+<!-- LETTER -->
+<div class="page" id="p4">
+<div class="banner">🎀💗🎀</div>
+
+<div class="letter">
+<p><b>To:</b></p>
+<img src="hphoto.jpg" width="100">
+
+<p><b>From:</b></p>
+<img src="mphoto.jpg" width="100">
+
+<p>
+Meri pyari si Catoo 🥰<br><br>
+Wesy tou yawrr meri roz hi eid hoti,Chaand jo mery pass hota😁💗 lekin phir b Eid Mubarak!😊💗<br>
+Hope so yeh Eid Apky liye dherr saari khushiyan laye 😊<br><br>
+May this eid be as sweet as you are. 🌙💕
+</p>
+
+<button onclick="next('p5')">Next 💗</button>
+</div>
+</div>
+
+<!-- SECRET -->
+<div class="page" id="p5">
+<div class="banner">🔐💗🔐</div>
+
+<h3>Secret Message 😁</h3>
+<p>My nickname is ??</p>
+
+<input id="ans">
+<button onclick="check()">Submit</button>
+
+<p id="wrong" style="display:none;">Tumhy yeh nahi pata ?? 😥😓😔😢</p>
+</div>
+
+<!-- FINAL -->
+<div class="page" id="p6">
+<div class="banner">🎊💗🎊</div>
+
+<h2>Baat sunnoo yawrr 🤭🤭</h2>
+
+
+<p> ready ho k apni pics bejnaa naa bhoolnaa 🤭🤭🤭</p>
+<img src="sphoto.jpg" class="final-img">
+<p>Okhhyy Meri bileee Hope so apki eid bhht bhhtttt achi guzry 💖👍 </p>
+<p>Happyyyy Eideeee 🤗😊😍</p>
+</div>
+
+<audio id="music" loop>
+<source src="music.mp3">
+</audio>
+
+<script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.7/dist/index.umd.js"></script>
+
+<script>
+
+function next(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))
+document.getElementById(id).classList.add('active')
+}
+
+function playMusic(){
+document.getElementById("music").play()
+}
+
+function checkStart(){
+let v=document.getElementById("q").value.trim().toLowerCase()
+if(["cato","catoo","catooo","catoooo"].includes(v)){
+next('p1')
+}else{
+document.getElementById("wrong0").style.display="block"
+}
+}
+
+
+function goToMain(){
+next('p3')
+
+for(let i=0;i<40;i++){
+let h=document.createElement("div")
+h.innerHTML="💗"
+h.style.position="absolute"
+h.style.left="50%"
+h.style.top="50%"
+h.style.fontSize="20px"
+h.style.transition="1s"
+document.body.appendChild(h)
+
+setTimeout(()=>{
+h.style.left=Math.random()*100+"%"
+h.style.top=Math.random()*100+"%"
+h.style.opacity="0"
+},10)
+}
+}
+
+function openWish(){
+document.getElementById("msg").style.display="block"
+}
+
+function check(){
+let v=document.getElementById("ans").value.toLowerCase()
+if(v==="teddy"){
+next('p6')
+}else{
+document.getElementById("wrong").style.display="block"
+}
+}
+
+</script>
+
+</body>
+</html>
